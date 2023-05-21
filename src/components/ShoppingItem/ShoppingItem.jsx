@@ -1,0 +1,1 @@
+import "./ShoppingItem.module.css"

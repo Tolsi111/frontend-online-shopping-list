@@ -1,0 +1,14 @@
+.button{
+    margin: 30px 3px 3px;
+    width: 170px;
+    height: 50px;
+    text-align: center;
+}
+.button-row {
+    display: flex;
+    flex-direction: row;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}

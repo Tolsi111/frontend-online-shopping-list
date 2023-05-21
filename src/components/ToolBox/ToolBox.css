@@ -1,0 +1,53 @@
+.toolbox-buttons-container {
+    display: flex;
+    align-items: center;
+}
+
+.toolbox-button {
+    margin-left: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.toolbox-button:hover,
+.toolbox-button:active {
+    cursor: pointer;
+    color: #EEEEEE;
+}
+.view {
+    color: #36AE7C;
+}
+.view:hover,
+.view:active {
+    background: #36AE7C;
+}
+
+.shop {
+    color: #187498;
+}
+.shop:hover,
+.shop:active {
+    background: #187498;
+}
+
+.edit {
+    color: #FF8400;
+}
+.edit:hover,
+.edit:active {
+    background: #FF8400;
+}
+
+.delete {
+    color: #EB5353;
+}
+.delete:hover,
+.delete:hover {
+    background: #EB5353;
+}
