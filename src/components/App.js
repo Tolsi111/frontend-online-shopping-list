@@ -5,7 +5,6 @@ import Footer from "./layout/Footer";
 import Home from "../pages/Home";
 import ShoppingLists from "../pages/ShoppingLists";
 import Recipes from "../pages/Recipes";
-import Shopping from "../pages/Shopping";
 import Statistics from "../pages/Statistics";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
                     {<Route path={'/'} element={<Home/>}/>}
                     {<Route path={'/shopping-lists'} element={<ShoppingLists/>}/>}
                     {<Route path={'/recipes'} element={<Recipes/>}/>}
-                    {<Route path={'/shopping'} element={<Shopping/>}/>}
                     {<Route path={'/statistics'} element={<Statistics/>}/>}
                     {<Route path={'/*'} element={<Home/>}/>}
                 </Routes>
