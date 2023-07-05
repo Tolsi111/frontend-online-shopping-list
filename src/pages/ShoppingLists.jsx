@@ -55,18 +55,26 @@ function ShoppingLists() {
         onDelete={deleteShoppingList}/>)
 
     return (
-        <div className={"shopping-lists-main"}>
-            <section className={"container"}>
-                <Card>
-                    <ul>
-                        {list}
-                    </ul>
-                </Card>
-            </section>
-            <section className={"container"}>
-                <ShoppingListForm/>
-            </section>
-        </div>
+        <>
+            <div style={{display: isLoading ? 'flex' : 'none'}} className='modal'>
+                <div className={"modal-content"}>
+                    <div className={'loader'}></div>
+                    <div className={'modal-text'}>Loading...</div>
+                </div>
+            </div>
+            <div className={"shopping-lists-main"}>
+                <section className={"container"}>
+                    <Card>
+                        <ul>
+                            {list}
+                        </ul>
+                    </Card>
+                </section>
+                <section className={"container"}>
+                    <ShoppingListForm/>
+                </section>
+            </div>
+        </>
     )
 }
 
