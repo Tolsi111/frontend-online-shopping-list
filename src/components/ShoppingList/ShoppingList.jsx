@@ -13,7 +13,7 @@ function ShoppingList (props) {
                 <div className={classes.price}>{price}</div>
             </div>
             <div className={classes.toolboxContainer}>
-                <ShoppingListToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle} itemDescriprion={props.itemDescription}></ShoppingListToolBox>
+                <ShoppingListToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle} itemDescription={props.itemDescription}></ShoppingListToolBox>
             </div>
         </li>
     )

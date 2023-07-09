@@ -29,7 +29,7 @@ function ShoppingListToolBox(props) {
 
     function handleEdit(e) {
         e.preventDefault()
-        formCtx.setSelectedShoppingList({id: props.itemId, title: props.itemTitle, description: props.itemDescriprion})
+        formCtx.setSelectedShoppingList({id: props.itemId, title: props.itemTitle, description: props.itemDescription})
         console.log("edit!");
     }
 
