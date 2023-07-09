@@ -3,11 +3,15 @@ import {useContext, useEffect, useState} from "react";
 import Card from "../components/Card/Card";
 import ShoppingList from "../components/ShoppingList/ShoppingList";
 import ShoppingListForm from "../components/ShoppingListForm/ShoppingListForm";
+import ShoppingListItemsContext from "../context/ShoppingListItemsContext";
+import ShoppingItemsList from "../components/ShoppingItemsList/ShoppingItemsList";
 
 function ShoppingLists() {
     const [shoppingLists, setShoppingLists] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState();
+
+    const itemCtx = useContext(ShoppingListItemsContext);
 
     useEffect(() => {
         async function fetchShoppingLists() {
@@ -71,7 +75,8 @@ function ShoppingLists() {
                     </Card>
                 </section>
                 <section className={"container"}>
-                    <ShoppingListForm/>
+                    {!itemCtx.isActive && <ShoppingListForm/>}
+                    {itemCtx.isActive && <ShoppingItemsList/>}
                 </section>
             </div>
         </>

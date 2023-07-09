@@ -1,5 +1,5 @@
 import classes from "./ShoppingList.module.css"
-import ToolBox from "../ToolBox/ToolBox";
+import ShoppingListToolBox from "../ToolBox/ShoppingListToolBox";
 
 
 function ShoppingList (props) {
@@ -13,7 +13,7 @@ function ShoppingList (props) {
                 <div className={classes.price}>{price}</div>
             </div>
             <div className={classes.toolboxContainer}>
-                <ToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle} itemDescriprion={props.itemDescription}></ToolBox>
+                <ShoppingListToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle} itemDescriprion={props.itemDescription}></ShoppingListToolBox>
             </div>
         </li>
     )

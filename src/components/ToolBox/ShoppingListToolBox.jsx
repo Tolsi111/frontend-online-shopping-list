@@ -1,20 +1,25 @@
-import "./ToolBox.css"
+import "./ShoppingListToolBox.css"
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {useContext, useState} from "react";
 import ShoppingListFormContext from "../../context/ShoppingListFormContext";
+import ShoppingListItemsContext from "../../context/ShoppingListItemsContext";
 
-function ToolBox(props) {
+function ShoppingListToolBox(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [httpError, setHttpError] = useState();
 
     const formCtx = useContext(ShoppingListFormContext);
+    const itemCtx = useContext(ShoppingListItemsContext);
 
     function handleView(e) {
         e.preventDefault()
-        console.log("view!");
+        itemCtx.activate();
+        itemCtx.setSelectedShoppingListId(props.itemId)
+        console.log("view!" + props.itemTitle);
+        console.log("will get items from shopping list with id: " + props.itemId);
     }
 
     function handleShop(e) {
@@ -62,4 +67,4 @@ function ToolBox(props) {
     )
 }
 
-export default ToolBox;
+export default ShoppingListToolBox;
