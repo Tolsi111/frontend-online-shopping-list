@@ -17,9 +17,8 @@ function ShoppingListToolBox(props) {
     function handleView(e) {
         e.preventDefault()
         itemCtx.activate();
-        itemCtx.setSelectedShoppingListId(props.itemId)
-        console.log("view!" + props.itemTitle);
-        console.log("will get items from shopping list with id: " + props.itemId);
+        itemCtx.setSelectedShoppingListId(props.itemId);
+        itemCtx.setSelectedShoppingListIngredients(props.itemIngredients);
     }
 
     function handleShop(e) {
@@ -38,7 +37,7 @@ function ShoppingListToolBox(props) {
         setIsLoading(true);
 
         async function deleteShoppingList() {
-            const response = await fetch('http://localhost:8080/shopping-lists/' + props.itemId,{
+            const response = await fetch('http://localhost:8080/shopping-lists/' + props.itemId, {
                 method: 'DELETE'
             })
 

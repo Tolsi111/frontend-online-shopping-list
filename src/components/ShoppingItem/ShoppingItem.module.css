@@ -1,0 +1,28 @@
+.shoppingItem {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.shoppingItem h3 {
+    margin: 0 0 0.25rem 0;
+    color: #222831;
+}
+
+.description {
+    font-style: italic;
+    color: #222831;
+}
+
+.category {
+    margin-top: 0.25rem;
+    font-weight: bold;
+    color: #222831;
+    font-size: 1.25rem;
+}
+
+.toolboxContainer {
+    display: flex;
+}

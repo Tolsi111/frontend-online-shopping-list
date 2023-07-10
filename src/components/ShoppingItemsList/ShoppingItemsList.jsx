@@ -1,7 +1,18 @@
-function ShoppingItemsList () {
+import ShoppingItem from "../ShoppingItem/ShoppingItem";
+import {useContext} from "react";
+import ShoppingListItemsContext from "../../context/ShoppingListItemsContext";
+
+function ShoppingItemsList() {
+    const itemCtx = useContext(ShoppingListItemsContext);
+
+    const list = itemCtx.selectedShoppingListIngredients.map(ingredient => <ShoppingItem key={ingredient.itemId}
+                                                                                         itemName={ingredient.itemName}
+                                                                                         itemCategory={ingredient.itemCategory}
+                                                                                         itemAmount={ingredient.shoppingItemAmount}
+                                                                                         itemPricePerUnit={ingredient.itemPricePerUnit}/>)
     return (
         <>
-            <p>Shopping items list</p>
+            {list}
         </>
     )
 }

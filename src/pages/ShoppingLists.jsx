@@ -24,14 +24,25 @@ function ShoppingLists() {
             const loadedShoppingLists = [];
 
             for (const key in responseItems) {
+                const loadedShoppingItems = [];
+                for(const key2 in responseItems[key].items) {
+                    loadedShoppingItems.push({
+                        shoppingItemId: responseItems[key].items[key2].id,
+                        shoppingItemAmount: responseItems[key].items[key2].amount,
+                        itemId: responseItems[key].items[key2].item.id,
+                        itemName: responseItems[key].items[key2].item.name,
+                        itemCategory: responseItems[key].items[key2].item.category,
+                        itemPricePerUnit: responseItems[key].items[key2].item.price_per_unit
+                    })
+                }
                 loadedShoppingLists.push({
                     id: responseItems[key].id,
                     title: responseItems[key].title,
                     description: responseItems[key].description,
                     price: responseItems[key].price,
+                    ingredients: loadedShoppingItems
                 })
             }
-
             setShoppingLists(loadedShoppingLists);
             setIsLoading(false);
         }
@@ -56,6 +67,7 @@ function ShoppingLists() {
         itemTitle={shoppingList.title}
         itemDescription={shoppingList.description}
         itemPrice={shoppingList.price}
+        itemIngredients={shoppingList.ingredients}
         onDelete={deleteShoppingList}/>)
 
     return (
@@ -70,13 +82,14 @@ function ShoppingLists() {
                 <section className={"container"}>
                     <Card>
                         <ul>
-                            {list}
+                            {!itemCtx.isActive && list}
+                            {itemCtx.isActive && <ShoppingItemsList/>}
                         </ul>
                     </Card>
                 </section>
                 <section className={"container"}>
                     {!itemCtx.isActive && <ShoppingListForm/>}
-                    {itemCtx.isActive && <ShoppingItemsList/>}
+                    {/*itemCtx.isActive && <ShoppingItemForm/>  return button*/}
                 </section>
             </div>
         </>

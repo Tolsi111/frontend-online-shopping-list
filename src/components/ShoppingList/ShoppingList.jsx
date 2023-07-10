@@ -2,7 +2,7 @@ import classes from "./ShoppingList.module.css"
 import ShoppingListToolBox from "../ToolBox/ShoppingListToolBox";
 
 
-function ShoppingList (props) {
+function ShoppingList(props) {
     const price = `${props.itemPrice.toFixed(2)} ron`;
 
     return (
@@ -13,7 +13,9 @@ function ShoppingList (props) {
                 <div className={classes.price}>{price}</div>
             </div>
             <div className={classes.toolboxContainer}>
-                <ShoppingListToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle} itemDescription={props.itemDescription}></ShoppingListToolBox>
+                <ShoppingListToolBox itemId={props.itemId} ondelete={props.onDelete} itemTitle={props.itemTitle}
+                                     itemDescription={props.itemDescription}
+                                     itemIngredients={props.itemIngredients}></ShoppingListToolBox>
             </div>
         </li>
     )
