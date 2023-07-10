@@ -5,6 +5,7 @@ import ShoppingList from "../components/ShoppingList/ShoppingList";
 import ShoppingListForm from "../components/ShoppingListForm/ShoppingListForm";
 import ShoppingListItemsContext from "../context/ShoppingListItemsContext";
 import ShoppingItemsList from "../components/ShoppingItemsList/ShoppingItemsList";
+import classes from "../components/ShoppingListForm/ShoppingListForm.module.css";
 
 function ShoppingLists() {
     const [shoppingLists, setShoppingLists] = useState([]);
@@ -25,7 +26,7 @@ function ShoppingLists() {
 
             for (const key in responseItems) {
                 const loadedShoppingItems = [];
-                for(const key2 in responseItems[key].items) {
+                for (const key2 in responseItems[key].items) {
                     loadedShoppingItems.push({
                         shoppingItemId: responseItems[key].items[key2].id,
                         shoppingItemAmount: responseItems[key].items[key2].amount,
@@ -70,6 +71,10 @@ function ShoppingLists() {
         itemIngredients={shoppingList.ingredients}
         onDelete={deleteShoppingList}/>)
 
+    function handleBack() {
+        itemCtx.deactivate();
+    }
+
     return (
         <>
             <div style={{display: isLoading ? 'flex' : 'none'}} className='modal'>
@@ -90,6 +95,7 @@ function ShoppingLists() {
                 <section className={"container"}>
                     {!itemCtx.isActive && <ShoppingListForm/>}
                     {/*itemCtx.isActive && <ShoppingItemForm/>  return button*/}
+                    {itemCtx.isActive && <div className={"backButton"} onClick={handleBack}><p>Back</p></div>}
                 </section>
             </div>
         </>

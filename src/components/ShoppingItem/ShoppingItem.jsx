@@ -13,7 +13,7 @@ function ShoppingItem(props) {
             <div>
                 <h3>{props.itemName}</h3>
                 <div className={classes.description}>amount: {props.itemAmount}, total value: {totalValue}</div>
-                <div className={classes.category}>{props.itemCategory}</div>
+                <div className={classes.description}>{props.itemCategory}</div>
             </div>
             <div className={classes.toolboxContainer}>
                 <ShoppingItemToolBox/>
