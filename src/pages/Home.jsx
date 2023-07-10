@@ -6,18 +6,18 @@ function Home() {
     return (
         <div className={"buttons-container"}>
             <div className={"button-row"}>
-                <div className={"button"}>
+                <div className={"saveButton"}>
                     <NavButton title={'Start shopping'} navigateTo={'/shopping-lists'}/>
                 </div>
-                <div className={"button"}>
+                <div className={"saveButton"}>
                     <NavButton title={'Statistics'} navigateTo={'/statistics'}/>
                 </div>
             </div>
             <div className={"button-row"}>
-                <div className={"button"}>
+                <div className={"saveButton"}>
                     <NavButton title={'Shopping lists'} navigateTo={'/shopping-lists'}/>
                 </div>
-                <div className={"button"}>
+                <div className={"saveButton"}>
                     <NavButton title={'Recipes list'} navigateTo={'/recipes'}/>
                 </div>
             </div>
