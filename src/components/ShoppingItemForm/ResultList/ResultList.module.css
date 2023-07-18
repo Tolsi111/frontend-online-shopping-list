@@ -1,0 +1,45 @@
+.container {
+    position: absolute;
+    /*display: flex;*/
+    display: block;
+    width: 27em;
+    height: 10em;
+    z-index: 99;
+    /*margin-left: 50%;*/
+    margin-top: 7%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    background-color: white;
+    overflow: auto;
+    animation: items-appear 1s ease-out forwards;
+}
+
+@keyframes items-appear {
+    from {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.itemContainer {
+    border-radius: 14px;
+    padding: 3px;
+    list-style-type: none;
+}
+
+.itemContainer:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.itemContainer.topInfo {
+    display: flex;
+}
+
+.flex {
+    display: flex;
+}

@@ -13,7 +13,7 @@ function ShoppingListForm() {
     const formCtx = useContext(ShoppingListFormContext);
 
     const titleRef = useRef();
-    const descriptionRef = useRef()
+    const descriptionRef = useRef();
 
     async function createShoppingList(title, description) {
         // setIsLoading(true)
