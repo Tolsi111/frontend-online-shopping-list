@@ -16,7 +16,7 @@ function ShoppingItem(props) {
                 <div className={classes.description}>{props.itemCategory}</div>
             </div>
             <div className={classes.toolboxContainer}>
-                <ShoppingItemToolBox/>
+                <ShoppingItemToolBox itemId={props.itemId} itemName={props.itemName} shoppingItemId={props.shoppingItemId} ondelete={props.ondelete}/>
             </div>
         </li>
     )

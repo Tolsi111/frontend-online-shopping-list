@@ -1,8 +1,12 @@
 import classes from "./ResultList.module.css"
+import {useContext} from "react";
+import ShoppingListItemsContext from "../../../context/ShoppingListItemsContext";
 
 function ResultItem(props) {
+    const itemCtx = useContext(ShoppingListItemsContext);
+
     function handleClick() {
-        console.log("Clicked on item: " + props.id + " " + props.name + " " + props.category + " " + props.price + " ")
+        itemCtx.setSelectedItem(props.id,props.name, 0);
         props.closeResultList();
     }
 

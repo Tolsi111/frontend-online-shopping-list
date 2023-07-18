@@ -15,19 +15,81 @@ function ShoppingItemForm() {
     const [searching, setSearching] = useState(false);
     const [resultList, setResultList] = useState([]);
 
+    async function saveShoppingItem(amount, shoppingListId, itemId) {
+        const postObject = {
+            amount: amount,
+            shopping_list_id: shoppingListId,
+            item_id: itemId
+        }
+        console.log("to be saved: " + postObject);
+
+        const response = await fetch('http://localhost:8080/shopping-items', {
+            method: "POST",
+            body: JSON.stringify(postObject),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const responseData = await response.json();
+        console.log("saveShoppingItem: " + responseData);
+    }
+
+    async function updateShoppingItem(amount, itemId) {
+        const postObject = {
+            amount: amount
+        }
+        console.log("to be updated: " + postObject);
+
+        const response = await fetch('http://localhost:8080/shopping-items/' + itemId, {
+            method: "PUT",
+            body: JSON.stringify(postObject),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const responseData = await response.json();
+        console.log("updateShoppingItem: " + responseData);
+    }
+
+    function checkExistingItem(value) {
+        console.log("checking for value: ")
+        console.log(value)
+        for (const key in itemCtx.selectedShoppingListIngredients) {
+            console.log("current: " )
+            console.log(itemCtx.selectedShoppingListIngredients[key].itemId)
+            if (itemCtx.selectedShoppingListIngredients[key].itemId === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     function handleSave() {
         // console.log(amountRef)
-        console.log("Saving hopping item...");
         const amountValue = parseInt(amountRef.current.value);
         // console.log("save shopping item!!!" + amountValue);
         if (isNaN(amountValue) || amountValue <= 0) {
             setAmountError(true);
             return;
-        }
-        else {
+        } else {
             setAmountError(false);
-            console.log("shopping item amount saved: " + amountValue);
         }
+        // console.log(itemCtx.selectedShoppingListIngredients)
+
+        if (checkExistingItem(itemCtx.selectedItemId)) {
+            updateShoppingItem(amountValue, itemCtx.selectedShoppingItemId).catch((err) => {
+                console.log(err)
+            })
+        } else {
+            saveShoppingItem(amountValue, itemCtx.shoppingListId, itemCtx.selectedItemId).catch((err) => {
+                console.log(err)
+            })
+
+        }
+        
+        window.location.reload();
     }
 
     async function handleChangeSearchTerm(e) {
@@ -73,12 +135,17 @@ function ShoppingItemForm() {
         <div className={classes.mainFormContainer}>
             <h1>Save shopping item</h1>
             <form className={classes.inputSection}>
-                <div className={classes.input}></div>
                 <div className={classes.input}>
                     <label>Search item </label>
                     {searching && <ResultList resultList={resultList} closeResultList={closeResultList}/>}
                     <input type="text" value={searchTerm} onChange={handleChangeSearchTerm}/>
                 </div>
+                <div className={classes.input}>
+                    <label>Selected item </label>
+                    <input type={"text"} defaultValue={itemCtx.selectedItemName} disabled={true}/>
+                    {/* aici la input cica mai trebe un ref */}
+                </div>
+
                 <div className={classes.input}>
                     <label>Amount </label>
                     <Tooltip title={"Please select a valid number"} placement={"top"} open={amountError}>
