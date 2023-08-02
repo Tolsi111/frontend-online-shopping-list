@@ -69,3 +69,10 @@ a {
     height: 50px;
     text-align: center;
 }
+
+@media (max-width: 900px) {
+    .buttonContainer {
+        width: 30%;
+        height: 60%;
+    }
+}

@@ -7,7 +7,7 @@ function Home() {
         <div className={"buttons-container"}>
             <div className={"button-row"}>
                 <div className={"saveButton"}>
-                    <NavButton title={'Start shopping'} navigateTo={'/shopping-lists'}/>
+                    <NavButton title={'Start shopping'} navigateTo={'/shopping'}/>
                 </div>
                 <div className={"saveButton"}>
                     <NavButton title={'Statistics'} navigateTo={'/statistics'}/>

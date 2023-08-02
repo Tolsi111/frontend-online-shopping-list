@@ -40,12 +40,23 @@
     animation: items-appear 1s ease-out forwards;
 }
 
-.shopping-lists-main {
+.main {
     display: flex;
     height: 100%;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+}
+
+@media (max-width: 900px) {
+    .main {
+        /*font-size: 1em;*/
+        flex-direction: column;
+    }
+    .container {
+        width: 90%;
+        height: 100%;
+    }
 }
 
 @keyframes items-appear {

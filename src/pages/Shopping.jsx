@@ -1,14 +1,11 @@
-import "./ShoppingLists.css"
-import {useContext, useEffect, useState} from "react";
+import "./ShoppingLists.css";
 import Card from "../components/Card/Card";
-import ShoppingList from "../components/ShoppingList/ShoppingList";
-import ShoppingListForm from "../components/ShoppingListForm/ShoppingListForm";
+import {useContext, useEffect, useState} from "react";
 import ShoppingListItemsContext from "../context/ShoppingListItemsContext";
-import ShoppingItemsList from "../components/ShoppingItemsList/ShoppingItemsList";
-import classes from "../components/ShoppingListForm/ShoppingListForm.module.css";
-import ShoppingItemForm from "../components/ShoppingItemForm/ShoppingItemForm";
-
-function ShoppingLists() {
+import ShoppingList from "../components/ShoppingList/ShoppingList";
+import Shop from "../components/Shop/Shop";
+import ShoppingListItems from "../components/ShoppingListItems/ShoppingListItems";
+function Shopping () {
     const [shoppingLists, setShoppingLists] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState();
@@ -55,47 +52,29 @@ function ShoppingLists() {
         });
     }, [])
 
-    function deleteShoppingList(id) {
-        setShoppingLists(prevState => {
-            return prevState.filter((shoppingList) => {
-                return shoppingList.id !== id;
-            })
-        })
-    }
-
-    const list = shoppingLists.map(shoppingList => <ShoppingList
+    const list = shoppingLists.map(shoppingList => <Shop
         key={shoppingList.id}
         itemId={shoppingList.id}
         itemTitle={shoppingList.title}
         itemDescription={shoppingList.description}
         itemPrice={shoppingList.price}
-        itemIngredients={shoppingList.ingredients}
-        onDelete={deleteShoppingList}/>)
+        itemIngredients={shoppingList.ingredients}/>)
 
     return (
         <>
-            <div style={{display: isLoading ? 'flex' : 'none'}} className='modal'>
-                <div className={"modal-content"}>
-                    <div className={'loader'}></div>
-                    <div className={'modal-text'}>Loading...</div>
-                </div>
-            </div>
+            {/*<p>This is Shopping!</p>*/}
             <div className={"main"}>
                 <section className={"container"}>
                     <Card>
                         <ul>
                             {!itemCtx.isActive && list}
-                            {itemCtx.isActive && <ShoppingItemsList/>}
+                            {itemCtx.isActive && <ShoppingListItems/>}
                         </ul>
                     </Card>
-                </section>
-                <section className={"container"}>
-                    {!itemCtx.isActive && <ShoppingListForm/>}
-                    {itemCtx.isActive && <ShoppingItemForm/>}
                 </section>
             </div>
         </>
     )
 }
 
-export default ShoppingLists;
+export default Shopping;
