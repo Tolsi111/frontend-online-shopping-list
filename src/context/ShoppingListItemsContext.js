@@ -16,6 +16,9 @@ const ShoppingListItemsContext = React.createContext({
     setSelectedShoppingListIngredients: (list) => {
     },
     setSelectedItem: (id, name) => {
+    },
+    refresh: () => {
+
     }
 })
 
@@ -52,6 +55,15 @@ export const ShoppingListItemsContextProvider = (props) => {
         setShoppingListIngredients(list);
     }
 
+    const refresh = () => {
+        setIsActive(false);
+        setShoppingListId(0);
+        setShoppingListIngredients([]);
+        setSelectedItemId(0);
+        setSelectedShoppingItemId(0);
+        setSelectedItemName('')
+    }
+
     return (<ShoppingListItemsContext.Provider value={{
         isActive: isActive,
         shoppingListId: shoppingListId,
@@ -63,7 +75,8 @@ export const ShoppingListItemsContextProvider = (props) => {
         deactivate: deactivate,
         setSelectedShoppingListId: setSelectedShoppingListId,
         setSelectedShoppingListIngredients: setSelectedShoppingListIngredients,
-        setSelectedItem: setSelectedItem
+        setSelectedItem: setSelectedItem,
+        refresh: refresh
     }}>{props.children}</ShoppingListItemsContext.Provider>)
 }
 

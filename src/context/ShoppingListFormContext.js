@@ -6,6 +6,9 @@ const ShoppingListFormContext = React.createContext({
     description: '',
     shoppingLists: [],
     setSelectedShoppingList: (shoppingList) => {
+    },
+    refresh: () => {
+
     }
 })
 
@@ -20,12 +23,19 @@ export const ShoppingListContextProvider = (props) => {
         setDescription(shoppingList.description);
     }
 
+    const refresh = () => {
+        setId(0);
+        setTitle('');
+        setDescription('');
+    }
+
 
     return (<ShoppingListFormContext.Provider value={{
         id: id,
         title: title,
         description: description,
-        setSelectedShoppingList: setSelectedShoppingList
+        setSelectedShoppingList: setSelectedShoppingList,
+        refresh: refresh
     }}>{props.children}</ShoppingListFormContext.Provider>)
 }
 

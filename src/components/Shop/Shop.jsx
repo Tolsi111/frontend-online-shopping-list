@@ -11,7 +11,7 @@ function Shop(props) {
                 <div className={classes.description}>{props.itemDescription}</div>
                 <div className={classes.price}>{price}</div>
             </div>
-            <ShoppingToolBox></ShoppingToolBox>
+            <ShoppingToolBox itemId={props.itemId} itemIngredients={props.itemIngredients}></ShoppingToolBox>
         </li>
     )
 }

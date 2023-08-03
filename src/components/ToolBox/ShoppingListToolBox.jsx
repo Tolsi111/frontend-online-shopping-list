@@ -6,6 +6,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {useContext, useState} from "react";
 import ShoppingListFormContext from "../../context/ShoppingListFormContext";
 import ShoppingListItemsContext from "../../context/ShoppingListItemsContext";
+import {useNavigate} from "react-router";
 
 function ShoppingListToolBox(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +14,8 @@ function ShoppingListToolBox(props) {
 
     const formCtx = useContext(ShoppingListFormContext);
     const itemCtx = useContext(ShoppingListItemsContext);
+
+    const navigate = useNavigate();
 
     function handleView(e) {
         e.preventDefault()
@@ -23,7 +26,11 @@ function ShoppingListToolBox(props) {
 
     function handleShop(e) {
         e.preventDefault()
-        console.log("shop!");
+        itemCtx.activate();
+        itemCtx.setSelectedShoppingListId(props.itemId);
+        itemCtx.setSelectedShoppingListIngredients(props.itemIngredients);
+        navigate('/shopping');
+
     }
 
     function handleEdit(e) {
