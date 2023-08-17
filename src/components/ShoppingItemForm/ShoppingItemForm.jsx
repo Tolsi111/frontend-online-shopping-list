@@ -125,6 +125,7 @@ function ShoppingItemForm() {
 
     function handleBack() {
         itemCtx.deactivate();
+        window.location.reload();
     }
 
     function closeResultList() {
